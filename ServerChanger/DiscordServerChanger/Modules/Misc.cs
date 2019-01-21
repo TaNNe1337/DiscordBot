@@ -34,7 +34,7 @@ public class Misc : ModuleBase<SocketCommandContext>
         string link = "steam://" + ip + "/" + pw;
 
         var embed = new EmbedBuilder();
-        embed.WithTitle("steam");
+        embed.WithTitle("CS Server Ip");
         embed.WithDescription(link);
         embed.WithColor(new Color(0, 255, 0));
        
