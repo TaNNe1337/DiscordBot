@@ -13,7 +13,7 @@ public class Misc : ModuleBase<SocketCommandContext>
         embed.WithDescription(message);
         embed.WithColor(new Color(0, 255, 0));
 
-        await Context.Channel.SendMessageAsync("", false, embed.Build());
+        await ReplyAsync("", false, embed.Build());
     }
     [Command("userinfo")]
     public async Task Userinfo()
@@ -23,6 +23,21 @@ public class Misc : ModuleBase<SocketCommandContext>
         embed.WithDescription(Context.User.ToString());
         embed.WithColor(new Color(0, 255, 0));
 
+        await ReplyAsync("", false, embed.Build());
+    }
+    [Command("ip")]
+    public async Task pick([Remainder]string message)
+    {
+        string[] options = message.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+        string ip = options[0].Replace(' ', '/');
+        string pw = options[1].Trim().Split(' ')[1];
+        string link = "steam://" + ip + "/" + pw;
+
+        var embed = new EmbedBuilder();
+        embed.WithTitle("steam");
+        embed.WithDescription(link);
+        embed.WithColor(new Color(0, 255, 0));
+       
         await ReplyAsync("", false, embed.Build());
     }
 }
